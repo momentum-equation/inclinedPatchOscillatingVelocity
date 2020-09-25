@@ -1,0 +1,9 @@
+# exclude files generated during compilation
+.o
+.dep
+.C~
+
+
+# exclude folder containing compiled files
+linux64GccDPInt64Opt/
+lnInclude/

@@ -1,0 +1,81 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.5                                   |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+//application moveDynamicMesh;
+
+application     pimpleDyMFoam;
+
+startFrom       startTime;
+
+//startFrom       latestTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         0.12;
+
+deltaT          0.000004;
+
+writeControl    timeStep;
+
+writeInterval   25;
+
+purgeWrite     0;
+
+writeFormat     binary;
+
+writePrecision  6;
+
+writeCompression uncompressed;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+
+adjustTimeStep  no;
+
+maxCo           0.2;
+
+//libs ("libAngularOscillatingDisplacement.so");
+//libs ("libMyPolynomVelocity.so");
+libs ("libMyOscillatingVelocity.so");
+//libs ("libgroovyBC.so");
+// ************************************************************************* //
+
+functions
+{
+	probes2
+	{
+		type probes;
+		functionObjectLibs ("libsampling.so");
+		//dictionary probesDict;
+		probeLocations
+			(
+				(0 0.0095 0)
+				(0 0.0105 0)
+				(0 0.0035 0)
+			);
+		fields 	(p U);
+		outputControl       timeStep;
+		outputInterval      1;
+	}
+
+}
+
+// ************************************************************************* //

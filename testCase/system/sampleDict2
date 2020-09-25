@@ -1,0 +1,76 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  6                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      sampleDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+type surfaces;
+
+surfaceFormat raw;
+
+interpolationScheme cell;
+//interpolationScheme cellPoint;
+//interpolationScheme cellPointFace;
+
+// Fields to sample.
+fields
+(
+    UMean
+);
+
+surfaces
+(
+    surf1
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 0.0095 0);
+            normalVector    (0 1 0);
+        }
+    }
+
+    /*surf2
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 0 0.1);
+            normalVector    (0 0 1);
+        }
+
+        interpolate     true;
+    }
+
+    surf3
+    {
+        type            sampledTriSurfaceMesh;
+	surface     	surface2.stl;
+ 	source      	cells;
+
+	interpolate true;	//interpolate cell values to stl triangulation
+    }
+
+    surf4
+    {
+        type            sampledTriSurfaceMesh;
+	surface     	surface3.stl;
+ 	source      	insideCells;
+
+	interpolate false;
+    }*/
+);
+
+// *********************************************************************** //

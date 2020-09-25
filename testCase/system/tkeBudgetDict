@@ -1,0 +1,44 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      postProcessingDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+tkeBudgetDict
+{
+  type            tkeBudget;
+  libs ("libTkeBudget.so");
+  enabled         true;
+
+  Re              1020;
+
+  //writeControl   timeStep;
+  //writeInterval  1;
+
+  timeStart        0;
+  timeEnd          0.12;
+  writeControl    writeTime;
+
+  fields
+    (
+     Ck    // convection
+     Pk    // production
+     Tk    // turbulence transport
+     Dk    // viscous diffusion
+     Epik  // viscous dissipation
+     Pik   // velocity-gradient transport
+     );
+}
+
+// ************************************************************************* //

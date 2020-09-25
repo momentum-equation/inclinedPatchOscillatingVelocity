@@ -1,0 +1,552 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      sampleDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Set output format : choice of
+//      xmgr
+//      jplot
+//      gnuplot
+//      raw
+//      vtk
+//      ensight
+//      csv
+
+libs ("libsampling.so");
+type      sets;
+setFormat raw;
+
+// Surface output format. Choice of
+//      null        : suppress output
+//      ensight     : Ensight Gold format, one field per case file
+//      foamFile    : separate points, faces and values file
+//      dx          : DX scalar or vector format
+//      vtk         : VTK ascii format
+//      raw         : x y z value format for use with e.g. gnuplot 'splot'.
+//
+// Note:
+// other formats such as obj, stl, etc can also be written (by proxy)
+// but without any values!
+surfaceFormat raw;
+
+// optionally define extra controls for the output formats
+formatOptions
+{
+    ensight
+    {
+        format  ascii;
+    }
+}
+
+// interpolationScheme. choice of
+//      cell          : use cell-centre value only; constant over cells
+//                      (default)
+//      cellPoint     : use cell-centre and vertex values
+//      cellPointFace : use cell-centre, vertex and face values.
+//      pointMVC      : use point values only (Mean Value Coordinates)
+//      cellPatchConstrained : like 'cell' but uses cell-centre except on
+//                             boundary faces where it uses the boundary value.
+//                             For use with e.g. patchCloudSet.
+// 1] vertex values determined from neighbouring cell-centre values
+// 2] face values determined using the current face interpolation scheme
+//    for the field (linear, gamma, etc.)
+interpolationScheme cellPoint;
+
+// Fields to sample.
+fields
+(
+//    Uy_mean
+    Ux_mean
+);
+
+// Set sampling definition: choice of
+//      lineUniform             evenly distributed points on line
+//      face                one point per face intersection
+//      midPoint            one point per cell, inbetween two face intersections
+//      midPointAndFace     combination of face and midPoint
+//
+//      polyLine            specified points, not nessecary on line, uses
+//                          tracking
+//      cloud               specified points, uses findCell
+//      triSurfaceMeshPointSet  points of triSurface
+//
+// axis: how to write point coordinate. Choice of
+// - x/y/z: x/y/z coordinate only
+// - xyz: three columns
+//  (probably does not make sense for anything but raw)
+// - distance: distance from start of sampling line (if uses line) or
+//             distance from first specified sampling point
+//
+// type specific:
+//      lineUniform, face, midPoint, lineUniform : start and end coordinate
+//      lineUniform: extra number of sampling points
+//      polyLine, cloud: list of coordinates
+//      patchCloud: list of coordinates and set of patches to look for nearest
+//      patchSeed: random sampling on set of patches. Points slightly off
+//                 face centre.
+sets
+(
+  lineY0
+  {
+  	type      lineUniform;
+    axis      y;
+    start     (0 0.017 0);
+    end       (0 0.019 0);
+    nPoints    100;
+  }
+
+    lineY1
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.001 0.017 0);
+    end       (0.001 0.019 0);
+    nPoints    100;
+  }
+
+  lineY2
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.002 0.017 0);
+    end       (0.002 0.019 0);
+    nPoints    100;
+  }
+
+  lineY3
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.003 0.017 0);
+    end       (0.003 0.019 0);
+    nPoints    100;
+  }
+
+  lineY4
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.004 0.017 0);
+    end       (0.004 0.019 0);
+    nPoints    100;
+  }
+
+  lineY5
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.005 0.017 0);
+    end       (0.005 0.019 0);
+    nPoints    100;
+  }
+
+  lineY6
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.006 0.017 0);
+    end       (0.006 0.019 0);
+    nPoints    100;
+  }
+
+  lineY7
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.007 0.017 0);
+    end       (0.007 0.019 0);
+    nPoints    100;
+  }
+
+  lineY8
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.008 0.017 0);
+    end       (0.008 0.019 0);
+    nPoints    100;
+  }
+
+  lineY9
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.009 0.017 0);
+    end       (0.009 0.019 0);
+    nPoints    100;
+  }
+
+  lineY10
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.010 0.017 0);
+    end       (0.010 0.019 0);
+    nPoints    100;
+  }
+
+  lineY11
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.011 0.017 0);
+    end       (0.011 0.019 0);
+    nPoints    100;
+  }
+
+  lineY12
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.012 0.017 0);
+    end       (0.012 0.019 0);
+    nPoints    100;
+  }
+
+  lineY13
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.017 0.017 0);
+    end       (0.017 0.019 0);
+    nPoints    100;
+  }
+
+  lineY14
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.014 0.017 0);
+    end       (0.014 0.019 0);
+    nPoints    100;
+  }
+
+  lineY15
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.015 0.017 0);
+    end       (0.015 0.019 0);
+    nPoints    100;
+  }
+
+  lineY16
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.017 0.017 0);
+    end       (0.017 0.019 0);
+    nPoints    100;
+  }
+
+  lineY17
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.017 0.017 0);
+    end       (0.017 0.019 0);
+    nPoints    100;
+  }
+
+  lineY18
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.018 0.017 0);
+    end       (0.018 0.019 0);
+    nPoints    100;
+  }
+
+  lineY19
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.019 0.017 0);
+    end       (0.019 0.019 0);
+    nPoints    100;
+  }
+
+  lineY20
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.020 0.017 0);
+    end       (0.020 0.019 0);
+    nPoints    100;
+  }
+
+  lineY21
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.021 0.017 0);
+    end       (0.021 0.019 0);
+    nPoints    100;
+  }
+
+  lineY22
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.022 0.017 0);
+    end       (0.022 0.019 0);
+    nPoints    100;
+  }
+
+  lineY23
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.023 0.017 0);
+    end       (0.023 0.019 0);
+    nPoints    100;
+  }
+
+  lineY24
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.024 0.017 0);
+    end       (0.024 0.019 0);
+    nPoints    100;
+  }
+
+  lineY25
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.025 0.017 0);
+    end       (0.025 0.019 0);
+    nPoints    100;
+  }
+
+  lineY26
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.026 0.017 0);
+    end       (0.026 0.019 0);
+    nPoints    100;
+  }
+
+  lineY27
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.027 0.017 0);
+    end       (0.027 0.019 0);
+    nPoints    100;
+  }
+
+  lineY28
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.028 0.017 0);
+    end       (0.028 0.019 0);
+    nPoints    100;
+  }
+
+  lineY29
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.029 0.017 0);
+    end       (0.029 0.019 0);
+    nPoints    100;
+  }
+
+  lineY30
+  {
+    type      lineUniform;
+    axis      y;
+    start     (0.03 0.017 0);
+    end       (0.03 0.019 0);
+    nPoints    100;
+  }
+);
+
+
+// Surface sampling definition
+//
+// 1] patches are not triangulated by default
+// 2] planes are always triangulated
+// 3] iso-surfaces are always triangulated
+/*surfaces
+(
+    constantPlane
+    {
+        type            plane;    // always triangulated
+        basePoint       (0.0501 0.0501 0.005);
+        normalVector    (0.1 0.1 1);
+
+        //- Optional: restrict to a particular zone
+        // zone        zone1;
+
+        //- Optional: do not triangulate (only for surfaceFormats that support
+        //            polygons)
+        //triangulate     false;
+    }
+
+    interpolatedPlane
+    {
+        type            plane;    // always triangulated
+
+        // Make plane relative to the coordinateSystem (Cartesian)
+        coordinateSystem
+        {
+            origin      (0.0501 0.0501 0.005);
+
+            // Add a coordinate rotation
+            // (required, so here one that doesn't change anything)
+            coordinateRotation
+            {
+                type    axesRotation;
+                e1      (1 0 0);
+                e2      (0 1 0);
+            }
+        }
+        basePoint       (0 0 0);
+        normalVector    (0.1 0.1 1);
+        interpolate     true;
+    }
+
+    walls_constant
+    {
+        type            patch;
+        patches         ( ".*Wall.*" );
+        // Optional: whether to leave as faces (=default) or triangulate
+        // triangulate     false;
+    }
+
+    walls_interpolated
+    {
+        type            patch;
+        patches         ( ".*Wall.*" );
+        interpolate     true;
+        // Optional: whether to leave as faces (=default) or triangulate
+        // triangulate     false;
+    }
+
+    nearWalls_interpolated
+    {
+        // Sample cell values off patch. Does not need to be the near-wall
+        // cell, can be arbitrarily far away.
+        type            patchInternalField;
+        patches         ( ".*Wall.*" );
+        interpolate     true;
+
+
+        // Optional: specify how to obtain sampling points from the patch
+        //           face centres (default is 'normal')
+        //
+        //  //- Specify distance to offset in normal direction
+        offsetMode  normal;
+        distance    0.1;
+        //
+        //  //- Specify single lineUniform offset
+        //  offsetMode  lineUniform;
+        //  offset      (0 0 0.0001);
+        //
+        //  //- Specify offset per patch face
+        //  offsetMode  nonlineUniform;
+        //  offsets     ((0 0 0.0001) (0 0 0.0002));
+
+
+        // Optional: whether to leave as faces (=default) or triangulate
+        // triangulate     false;
+    }
+
+    interpolatedIso
+    {
+        // Iso surface for interpolated values only
+        type            isoSurface;    // always triangulated
+        isoField        rho;
+        isoValue        0.5;
+        interpolate     true;
+
+        //zone            ABC;          // Optional: zone only
+        //exposedPatchName fixedWalls;  // Optional: zone only
+
+        // regularise      false;    // Optional: do not simplify
+        // mergeTol        1e-10;    // Optional: fraction of mesh bounding box
+                                     // to merge points (default=1e-6)
+    }
+    constantIso
+    {
+        // Iso surface for constant values.
+        // Triangles guaranteed not to cross cells.
+        type            isoSurfaceCell;    // always triangulated
+        isoField        U
+        isoValue        0.5;
+        interpolate     false;
+        regularise      false;              // do not simplify
+        // mergeTol        1e-10;    // Optional: fraction of mesh bounding box
+                                     // to merge points (default=1e-6)
+    }
+
+    triangleCut
+    {
+        // Cutingplane using iso surface
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0.4 0 0.4);
+            normalVector    (1 0.2 0.2);
+        }
+        interpolate     true;
+
+        //zone            ABC;          // Optional: zone only
+        //exposedPatchName fixedWalls;  // Optional: zone only
+
+        // regularise      false;    // Optional: do not simplify
+        // mergeTol        1e-10;    // Optional: fraction of mesh bounding box
+                                     // to merge points (default=1e-6)
+    }
+
+    distance
+    {
+        // Isosurface from signed/unsigned distance to surface
+        type            distanceSurface;
+        signed          true;
+
+        // Definition of surface
+        surfaceType     triSurfaceMesh;
+        surfaceName     integrationPlane.stl;
+        // Distance to surface
+        distance        0.0;
+
+        //cell            false;// optional: use isoSurface instead
+                                // of isoSurfaceCell
+        interpolate     false;
+        regularise      false;  // Optional: do not simplify
+        // mergeTol 1e-10;      // Optional: fraction of mesh bounding box
+                                // to merge points (default=1e-6)
+    }
+
+    triSurfaceSampling
+    {
+        // Sampling on triSurface
+        type        sampledTriSurfaceMesh;
+        surface     integrationPlane.stl;
+        source      boundaryFaces;  // What to sample: cells (nearest cell)
+                                    // insideCells (only triangles inside cell)
+                                    // boundaryFaces (nearest boundary face)
+        interpolate true;
+    }
+);*/
+
+
+// *********************************************************************** //

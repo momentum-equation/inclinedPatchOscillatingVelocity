@@ -1,0 +1,58 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+    Writes out values of fields at a specified list of points, interpolated to
+    specified boundary patches.
+
+\*---------------------------------------------------------------------------*/
+type            sets;
+libs            ("libsampling.so");
+
+executeControl  writeTime;
+writeControl    writeTime;
+
+interpolationScheme    cellPoint;
+setFormat        raw;
+
+fields
+(
+  yPlus_mean
+  wallShearStressx_mean
+);
+
+points
+(
+(0 0.019 0)
+(0.001 0.019 0)
+(0.002 0.019 0)
+(0.003 0.019 0)
+(0.004 0.019 0)
+(0.005 0.019 0)
+(0.006 0.019 0)
+(0.007 0.019 0)
+(0.008 0.019 0)
+(0.009 0.019 0)
+(0.01 0.019 0)
+);
+maxDistance 0.001;
+
+patches     ("domainTop");
+
+sets
+(
+    points
+    {
+        type        boundaryPoints;
+        axis        xyz;
+        points      $points;
+        maxDistance $maxDistance;
+        patches     $patches;
+    }
+);
+
+// ************************************************************************* //

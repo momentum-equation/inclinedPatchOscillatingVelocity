@@ -1,0 +1,80 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       pointVectorField;
+    location    "0";
+    object      pointMotionU;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    back
+    {
+        type            wedge;
+    }
+    front
+    {
+        type            wedge;
+    }
+    cavityRight
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    DIAPHRAGM
+    {
+        type            inclinedPatchOscillatingVelocity;
+        amplitude       0.0001156;
+        centerPoint     (0 0 0);
+        direction       (0 1 0);
+        // omega           1570.8;
+        freq            200;
+        rc              0.0225;
+        value           uniform (0 0 0);
+    }
+    cavityTop
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    orificeRight
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    domainBottom
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    domainRight
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    domainTop
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    defaultFaces
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //

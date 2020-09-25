@@ -1,0 +1,48 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.5                                   |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      oriAverageDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+   // surfaceFormat vtk;
+    type volFieldValue;
+    //type  faceSource;//surfaceFieldValue;
+    libs ("libfieldFunctionObjects.so");
+    enabled true;
+    valueOutput   true;
+    log true;
+    writeFields true;
+    writeControl  outputTime;
+   // regionType faceZone;
+    regionType cellZone;
+    name oriZone;
+    operation volAverage;
+    /*source sampledSurface;
+        sampledSurfaceDict
+        {
+           // Sampling on triSurface
+           type        sampledTriSurfaceMesh;
+           surface     int_1.stl;
+           source      cells;  // sample cells or boundaryFaces
+           interpolate true;
+        }
+            operation volAverage; // sum, weightedAverage, etc (banana)
+*/
+// operation weightedAverage;
+// weightField phi;
+    fields
+    (
+     // Uy_cycle
+       Uy
+        
+    );
+// ************************************************************************* //
